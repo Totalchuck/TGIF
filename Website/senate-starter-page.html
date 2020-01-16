@@ -1,0 +1,103 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+    
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     
+        <meta charset="utf8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="Stylesheets/custom.css">
+        <title>Senate start page</title>
+    
+    </head>
+    
+
+    
+    <body class="container-fluid justify-content-center">
+    
+         
+        <header>
+            <div class="container-fluid">
+                <div class="row justify-content-between align-items-start">
+        
+                    <img class="col-2" class="logo" src="/Website/Ressources/logo 4.png" alt="Logo">
+                    <a class="col-3 text-right" href="mailto: info@tgif.net  ">info@tgif.net</a>
+                </div>
+                <div class="row bande align-items-center text-center ">
+                    <div class="col"><a href="home-page.html">Home</a></div>
+        
+                    <div class="col">
+                        <button button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Congress 113</button>
+                        <div class="dropdown-menu"aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="senate-starter-page.html">Senate</a></li>
+                            <a class="dropdown-item" href="house-starter-page.html">House</a></li>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attendance</button>
+                        <div class="dropdown-menu"aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="attendance-senate-page.html">Senate</a></li>
+                            <a class="dropdown-item" href="attendance-house-page.html">House</a></li>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Party Loyalty</button>
+                        <div class="dropdown-menu"aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="loyalty-senate-page.html">Senate</a></li>
+                            <a class="dropdown-item" href="loyalty-house-page.html">House</a></li>
+                        </div>
+                    </div>
+        
+                </div>
+        
+            </div>
+        </header>
+    <div class="content text-center container-fluid">
+        <h2 class="container h3">Senators</h2>
+        <p class="row">First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S.
+            Constitution. Each state is represented by two senators, regardless of population, who serve staggered
+            six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to
+            treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet
+            secretaries, federal judges, other federal executive officials, military officers, regulatory officials,
+            ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the
+            House.</p c>
+
+        </div>
+        <div class="row" id="filter">
+            <div class="col-2"></div>
+            <div class="col-8 container-fluid row align-items-center justify-content-between content">
+                <div class="col-3"><p>Filter by party :</p></div>  
+                <div class="col-3"><input  id="checkRep" type="checkbox" name="Rep" value="Rep"> Republican</div>
+                <div class="col-3"><input  id="checkDem" type="checkbox" name="Dem" value="Dem"> Democrat</div>
+                <div class="col-3"><input  id="checkInd" type="checkbox" name="Ind" value="Ind"> Independent</div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+        <table class="container table table-striped" id="table">
+ 
+        </table>
+
+    </div>
+   
+        <div id="bande2" class="container-fluid col row justify-content-center order-last">
+     
+            <p class="col-5 text-center">2020 TGIF</p>
+            <p class="col-5 text-center">All Right Reserved </p>
+        </div>
+    <script src="/Website/JS/pro-congress-133-senate.js"></script>
+</body>
+
+</html>

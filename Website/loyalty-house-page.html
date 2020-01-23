@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <meta charset="utf8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="Stylesheets/custom.css">
-    <title>House loyalty page</title>
+    <title>House loyalty</title>
 
 </head>
 
@@ -31,35 +31,33 @@
     <header>
         <div class="container-fluid">
             <div class="row justify-content-between align-items-start">
-
-                <img class="col-2" class="logo" src="/Website/Ressources/logo 4.png" alt="Logo">
-                <a class="col-3 text-right" href="mailto: info@tgif.net  ">info@tgif.net</a>
+                <img class="col-2 logo" src="/Website/Ressources/logo4.png" alt="Logo">
+                <a class="col-3 text-right" href="mailto:info@tgif.net">info@tgif.net</a>
             </div>
             <div class="row bande align-items-center text-center ">
                 <div class="col"><a href="home-page.html">Home</a></div>
-
-                <div class="col">
-                    <button button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Congress 113</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="senate-starter-page.html">Senate</a></li>
-                        <a class="dropdown-item" href="house-starter-page.html">House</a></li>
+<div class="col">
+                    <button class="btn dropdown-toggle" type="button" 
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Congress 116</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="senate-starter-page.html">Senate</a>
+                       <a class="dropdown-item" href="house-starter-page.html">House</a>
                     </div>
                 </div>
                 <div class="col">
-                    <button button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <button class="btn dropdown-toggle" type="button" 
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attendance</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="attendance-senate-page.html">Senate</a></li>
-                        <a class="dropdown-item" href="attendance-house-page.html">House</a></li>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="attendance-senate-page.html">Senate</a>
+                        <a class="dropdown-item" href="attendance-house-page.html">House</a>
                     </div>
                 </div>
                 <div class="col">
-                    <button button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <button class="btn dropdown-toggle" type="button" 
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Party Loyalty</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="loyalty-senate-page.html">Senate</a></li>
-                        <a class="dropdown-item" href="loyalty-house-page.html">House</a></li>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="loyalty-senate-page.html">Senate</a>
+                        <a class="dropdown-item" href="loyalty-house-page.html">House</a>
                     </div>
                 </div>
 
@@ -80,16 +78,15 @@
 
         </div>
         <div class="col-6 text-center">
-            <h2 class="container h3 content">Senate at a glance</h2>
-            <table class="container table table-striped">
-                <thead>
+            <h2 class="container h3 content">House at a glance</h2>
+            <table class="container table table-striped" id="table">
+                
                     <tr>
                         <th>Party</th>
                         <th>Number of Reps</th>
                         <th>% Voted with Prty</th>
                     </tr>
-                </thead>
-                <tbody>
+                
                     <tr>
                         <td>Republican</td>
                         <td id="numRep">--</td>
@@ -105,15 +102,15 @@
                         <td id="numInd">--</td>
                         <td id="votedInd">--</td>
                     </tr>
-                </tbody>
+                
             </table>
         </div>
         </div>
 
         <div class="row align-items-start">
-            <div class="col-6 text-center" class="col-6 text-center">
+            <div class="col-6 text-center">
                 <h2 class="container h3 content">Least Loyal (Bottom 10% of Party)</h2>
-                <table class="container table table-striped" id="leastLoyal">
+                <table class="container table table-striped" id="least">
                     <tr>
                         <th>Name</th>
                         <th>Number Party Votes</th>
@@ -124,7 +121,7 @@
             </div>
             <div class="col-6 text-center">
                 <h2 class="container h3 content">Most Loyal (Top 10% of Party)</h2>
-                <table class="container table table-striped" id="mostLoyal">
+                <table class="container table table-striped" id="most">
 
                     <tr>
                         <th>Name</th>
@@ -150,7 +147,7 @@
 
             </div>
         </footer>
-        <script src="/Website/JS/Statistics-house-loyalty.js"></script>
+        <script src="/Website/JS/Attendance-Loyalty.js"></script>
 </body>
 
 </html>

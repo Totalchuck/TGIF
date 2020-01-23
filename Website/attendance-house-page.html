@@ -14,8 +14,8 @@
             crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="Statistics.js"></script>
-        <meta charset="utf8">
+ 
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="Stylesheets/custom.css">
         <title>House attendance</title>
@@ -30,42 +30,43 @@
     
     
             
-    <header>
-        <div class="container-fluid">
-            <div class="row justify-content-between align-items-start">
+        <header>
+            <div class="container-fluid">
+                <div class="row justify-content-between align-items-start">
+                    <img class="col-2 logo" src="/Website/Ressources/logo4.png" alt="Logo">
+                    <a class="col-3 text-right" href="mailto:info@tgif.net">info@tgif.net</a>
+                </div>
+                <div class="row bande align-items-center text-center ">
+                    <div class="col"><a href="home-page.html">Home</a></div>
+    <div class="col">
+                        <button class="btn dropdown-toggle" type="button" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Congress 116</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="senate-starter-page.html">Senate</a>
+                           <a class="dropdown-item" href="house-starter-page.html">House</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button class="btn dropdown-toggle" type="button" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attendance</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="attendance-senate-page.html">Senate</a>
+                            <a class="dropdown-item" href="attendance-house-page.html">House</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <button class="btn dropdown-toggle" type="button" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Party Loyalty</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="loyalty-senate-page.html">Senate</a>
+                            <a class="dropdown-item" href="loyalty-house-page.html">House</a>
+                        </div>
+                    </div>
     
-                <img class="col-2" class="logo" src="/Website/Ressources/logo 4.png" alt="Logo">
-                <a class="col-3 text-right" href="mailto: info@tgif.net  ">info@tgif.net</a>
+                </div>
+    
             </div>
-            <div class="row bande align-items-center text-center ">
-                <div class="col"><a href="home-page.html">Home</a></div>
-    
-                <div class="col">
-                    <button button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Congress 113</button>
-                    <div class="dropdown-menu"aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="senate-starter-page.html">Senate</a></li>
-                        <a class="dropdown-item" href="house-starter-page.html">House</a></li>
-                    </div>
-                </div>
-                <div class="col">
-                    <button button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Attendance</button>
-                    <div class="dropdown-menu"aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="attendance-senate-page.html">Senate</a></li>
-                        <a class="dropdown-item" href="attendance-house-page.html">House</a></li>
-                    </div>
-                </div>
-                <div class="col">
-                    <button button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Party Loyalty</button>
-                    <div class="dropdown-menu"aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="loyalty-senate-page.html">Senate</a></li>
-                        <a class="dropdown-item" href="loyalty-house-page.html">House</a></li>
-                    </div>
-                </div>
-    
-            </div>
-    
-        </div>
-    </header>
+        </header>
 
    <div class="row align-items-center">
         <div class="col-6 content text-center container-fluid">
@@ -77,7 +78,7 @@
          
          </div>
          <div class="col-6 text-center">
-            <h2 class="container h3 content">Senate at a glance</h2>
+            <h2 class="container h3 content">House at a glance</h2>
             <table class="container table" id="table">
                 
                     <tr>
@@ -108,9 +109,9 @@
 
        
        <div class="row align-items-start">
-            <div class="col-6 text-center" class="col-6 text-center">
+            <div class="col-6 text-center">
         <h2 class="container h3 content">Least Engaged (Bottom 10% Attendance)</h2>
-            <table class="container table table-striped" id="leastEngaged">
+            <table class="container table table-striped" id="least">
                 
                     <tr>
                         <th>Name</th>
@@ -124,7 +125,7 @@
         </div >
 <div class="col-6 text-center">
             <h2 class="container h3 content">Most Engaged (Top 10% Attendance)</h2>
-            <table class="container table table-striped" id="mostEngaged">
+            <table class="container table table-striped" id="most">
               
                     <tr>
                         <th>Name</th>
@@ -149,6 +150,6 @@
             </div>
         </footer>
         
-    <script src="/Website/JS/Statistic-house-attendance.js"></script>
+    <script src="/Website/JS/Attendance-Loyalty.js"></script>
 </body>
 </html>

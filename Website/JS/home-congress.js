@@ -1,5 +1,6 @@
 
 
+
 //Home Page
 
 if ((document.getElementsByTagName("title")[0].innerText=="Start page")) {
@@ -34,6 +35,7 @@ let states = []
 let HOS = []
 let congress =[]
 
+
 if (document.getElementsByTagName("title")[0].innerText=="House starting page") {
     fetch("https://api.propublica.org/congress/v1/116/house/members.json", init)
       .then(response => {
@@ -44,28 +46,23 @@ if (document.getElementsByTagName("title")[0].innerText=="House starting page") 
         return json;
       })
       .then(result => {
- 
-
     let string = JSON.stringify(result);
     data = JSON.parse(string)
-
-    console.log(data)
+    document.getElementById("plain").id="fade"
     members = data.results[0].members
-    console.log(members)
-    congress = data.results[0].congress
-    congressNr.innerHTML = "Congress" + " " + congress
-    console.log(congress)
     sortAndSpliceStates(members);
     HOS = data["results"][0]["chamber"];
     HouOrSen(members);
     dropdownState(states);
+    congress = data.results[0].congress
+    congressNr.innerHTML = "Congress" + " " + congress
   })
 
   .catch(error => console.log(error));
 } else if (document.getElementsByTagName("title")[0].innerText=="Senate starting page"){
   fetch("https://api.propublica.org/congress/v1/116/senate/members.json", init)
   .then(response => {
-
+    
     console.log(response);
     let json = response.json();
     console.log(json)
@@ -79,14 +76,17 @@ data = JSON.parse(string)
 
 console.log(data)
 members = data.results[0].members
+document.getElementById("plain").id="fade"
 console.log(members)
-congress = data.results[0].congress
-congressNr.innerHTML = "Congress" + " " + congress
 
 sortAndSpliceStates(members);
 HOS = data["results"][0]["chamber"];
 HouOrSen(members);
 dropdownState(states);
+congress = data.results[0].congress
+congressNr.innerHTML = "Congress" + " " + congress
+loading = true
+
 })
 
 .catch(error => console.log(error));
@@ -496,3 +496,4 @@ document.getElementById("filter").addEventListener("change", function () {
 })
 
 }
+

@@ -1,6 +1,4 @@
-
-
-  let init = {
+let init = {
   method: "GET",
   headers: {
     "X-API-Key": "SGMpjTcpJ2Ba68DwEiH53tdVgQNarFrtUB2Byi4T"
@@ -16,154 +14,149 @@ let congress = []
 
 
 
-if (document.getElementsByTagName("title")[0].innerText=="House attendance") {
-    fetch("https://api.propublica.org/congress/v1/116/house/members.json", init)
-      .then(response => {
-
-        console.log(response);
-        let json = response.json();
-        console.log(json)
-        return json;
-      })
-      .then(result => {
- 
-
-    let string = JSON.stringify(result);
-    data = JSON.parse(string)
-
-    console.log(data)
-    members = data.results[0].members
-    console.log(members)
-    congress = data.results[0].congress
-congressNr.innerHTML = "Congress" + " " + congress
-    console.log(members[0]["party"])
-        createList(members)
-        politicianNum();
-        createVotedPartyList(members);
-        avePartyVotedRep = average(RepVotedPartyList);
-        avePartyVotedDem = average(DemVotedPartyList)
-        avePartyVotedInd = average(IndVotedPartyList)
-         votedWithParty();
-         sortedMembers = members.sort(function (a, b) {
-          return a.missed_votes_pct - b.missed_votes_pct
-        });
-        tenPrct= Math.ceil(members.length / 10);
-        leastAtt(members)
-        mostAtt(members);
-        return members
-  })
-
-  .catch(error => console.log(error));
-} else if (document.getElementsByTagName("title")[0].innerText=="Senate attendance"){
-  fetch("https://api.propublica.org/congress/v1/116/senate/members.json", init)
-  .then(response => {
-
-    console.log(response);
-    let json = response.json();
-    console.log(json)
-    return json;
-  })
-  .then(result => {
-
-
-let string = JSON.stringify(result);
-data = JSON.parse(string)
-
-console.log(data)
-members = data.results[0].members
-console.log(members)
-congress = data.results[0].congress
-congressNr.innerHTML = "Congress" + " " + congress
-console.log(members[0]["party"])
-    createList(members)
-    politicianNum();
-    createVotedPartyList(members);
-    avePartyVotedRep = average(RepVotedPartyList);
-    avePartyVotedDem = average(DemVotedPartyList)
-    avePartyVotedInd = average(IndVotedPartyList)
-     votedWithParty();
-     sortedMembers = members.sort(function (a, b) {
-      return a.missed_votes_pct - b.missed_votes_pct
-    });
-    tenPrct= Math.ceil(members.length / 10);
-    leastAtt(members)
-    mostAtt(members);
-    return members
-}
-)}else if (document.getElementsByTagName("title")[0].innerText=="Senate loyalty"){
-  fetch("https://api.propublica.org/congress/v1/116/senate/members.json", init)
-  .then(response => {
-
-    console.log(response);
-    let json = response.json();
-    console.log(json)
-    return json;
-  })
-  .then(result => {
-
-
-let string = JSON.stringify(result);
-data = JSON.parse(string)
-
-console.log(data)
-members = data.results[0].members
-console.log(members)
-congress = data.results[0].congress
-congressNr.innerHTML = "Congress" + " " + congress
-console.log(members[0]["party"])
-    createList(members)
-    politicianNum();
-    createVotedPartyList(members);
-    avePartyVotedRep = average(RepVotedPartyList);
-    avePartyVotedDem = average(DemVotedPartyList)
-    avePartyVotedInd = average(IndVotedPartyList)
-     votedWithParty();
-     sortedMembersLoyality = members.sort(function (a, b) {
-      return a.votes_with_party_pct - b.votes_with_party_pct
-    });
-    tenPrct= Math.ceil(members.length / 10);
-    leastLoy(members)
-    mostLoy(members)
-   
-    return members
-})}
- else if (document.getElementsByTagName("title")[0].innerText=="House loyalty"){
+if (document.getElementsByTagName("title")[0].innerText == "House attendance") {
   fetch("https://api.propublica.org/congress/v1/116/house/members.json", init)
-  .then(response => {
+    .then(response => {
 
-    console.log(response);
-    let json = response.json();
-    console.log(json)
-    return json;
-  })
-  .then(result => {
+      console.log(response);
+      let json = response.json();
+      console.log(json)
+      return json;
+    })
+    .then(result => {
 
 
-let string = JSON.stringify(result);
-data = JSON.parse(string)
+      let string = JSON.stringify(result);
+      data = JSON.parse(string)
+      document.getElementById("plain").id="fade"
+      members = data.results[0].members
+      congress = data.results[0].congress
+      congressNr.innerHTML = "Congress" + " " + congress
+      createList(members)
+      politicianNum();
+      createVotedPartyList(members);
+      avePartyVotedRep = average(RepVotedPartyList);
+      avePartyVotedDem = average(DemVotedPartyList)
+      avePartyVotedInd = average(IndVotedPartyList)
+      votedWithParty();
+      sortedMembers = members.sort(function (a, b) {
+        return a.missed_votes_pct - b.missed_votes_pct
+      });
+      tenPrct = Math.ceil(members.length / 10);
+      leastAtt(members)
+      mostAtt(members);
+      return members
+    })
 
-console.log(data)
-members = data.results[0].members
-console.log(members)
-congress = data.results[0].congress
-congressNr.innerHTML = "Congress" + " " + congress
-console.log(members[0]["party"])
-    createList(members)
-    politicianNum();
-    createVotedPartyList(members);
-    avePartyVotedRep = average(RepVotedPartyList);
-    avePartyVotedDem = average(DemVotedPartyList)
-    avePartyVotedInd = average(IndVotedPartyList)
-     votedWithParty();
-     sortedMembersLoyality = members.sort(function (a, b) {
-      return a.votes_with_party_pct - b.votes_with_party_pct
-    });
-    tenPrct= Math.ceil(members.length / 10);
-    leastLoy(members)
-    mostLoy(members)
-   
-    return members
-})}
+    .catch(error => console.log(error));
+} else if (document.getElementsByTagName("title")[0].innerText == "Senate attendance") {
+  fetch("https://api.propublica.org/congress/v1/116/senate/members.json", init)
+    .then(response => {
+
+      console.log(response);
+      let json = response.json();
+      console.log(json)
+      return json;
+    })
+    .then(result => {
+
+
+      let string = JSON.stringify(result);
+      data = JSON.parse(string)
+      document.getElementById("plain").id="fade"
+      members = data.results[0].members
+ 
+      congress = data.results[0].congress
+      congressNr.innerHTML = "Congress" + " " + congress
+      console.log(members[0]["party"])
+      createList(members)
+      politicianNum();
+      createVotedPartyList(members);
+      avePartyVotedRep = average(RepVotedPartyList);
+      avePartyVotedDem = average(DemVotedPartyList)
+      avePartyVotedInd = average(IndVotedPartyList)
+      votedWithParty();
+      sortedMembers = members.sort(function (a, b) {
+        return a.missed_votes_pct - b.missed_votes_pct
+      });
+      tenPrct = Math.ceil(members.length / 10);
+      leastAtt(members)
+      mostAtt(members);
+      return members
+    })
+} else if (document.getElementsByTagName("title")[0].innerText == "Senate loyalty") {
+  fetch("https://api.propublica.org/congress/v1/116/senate/members.json", init)
+    .then(response => {
+
+      console.log(response);
+      let json = response.json();
+      console.log(json)
+      return json;
+    })
+    .then(result => {
+
+
+      let string = JSON.stringify(result);
+      data = JSON.parse(string)
+      document.getElementById("plain").id="fade"
+      members = data.results[0].members
+      console.log(members)
+      congress = data.results[0].congress
+      congressNr.innerHTML = "Congress" + " " + congress
+      console.log(members[0]["party"])
+      createList(members)
+      politicianNum();
+      createVotedPartyList(members);
+      avePartyVotedRep = average(RepVotedPartyList);
+      avePartyVotedDem = average(DemVotedPartyList)
+      avePartyVotedInd = average(IndVotedPartyList)
+      votedWithParty();
+      sortedMembersLoyality = members.sort(function (a, b) {
+        return a.votes_with_party_pct - b.votes_with_party_pct
+      });
+      tenPrct = Math.ceil(members.length / 10);
+      leastLoy(members)
+      mostLoy(members)
+
+      return members
+    })
+} else if (document.getElementsByTagName("title")[0].innerText == "House loyalty") {
+  fetch("https://api.propublica.org/congress/v1/116/house/members.json", init)
+    .then(response => {
+
+      console.log(response);
+      let json = response.json();
+      console.log(json)
+      return json;
+    })
+    .then(result => {
+
+
+      let string = JSON.stringify(result);
+      data = JSON.parse(string)
+      document.getElementById("plain").id="fade"
+      members = data.results[0].members
+      console.log(members)
+      congress = data.results[0].congress
+      congressNr.innerHTML = "Congress" + " " + congress
+      console.log(members[0]["party"])
+      createList(members)
+      politicianNum();
+      createVotedPartyList(members);
+      avePartyVotedRep = average(RepVotedPartyList);
+      avePartyVotedDem = average(DemVotedPartyList)
+      avePartyVotedInd = average(IndVotedPartyList)
+      votedWithParty();
+      sortedMembersLoyality = members.sort(function (a, b) {
+        return a.votes_with_party_pct - b.votes_with_party_pct
+      });
+      tenPrct = Math.ceil(members.length / 10);
+      leastLoy(members)
+      mostLoy(members)
+
+      return members
+    })
+}
 
 
 
@@ -207,35 +200,36 @@ function politicianNum() {
 
 //calculate the average voted within party and include in HTML
 
-var RepVotedPartyList =[]
+var RepVotedPartyList = []
 var DemVotedPartyList = [];
 var IndVotedPartyList = [];
 var avePartyVotedRep = average(RepVotedPartyList);
-var avePartyVotedDem =[]
+var avePartyVotedDem = []
 var avePartyVotedInd = []
 
 function createVotedPartyList(x) {
-  for (i = 0; i < x.length; i++) {   
+  for (i = 0; i < x.length; i++) {
     if (x[i]["party"] == "R" && x[i]["votes_with_party_pct"] != null) {
-       RepVotedPartyList.push(x[i]["votes_with_party_pct"])
-     
-    } else if (x[i]["party"] == "D" && x[i]["votes_with_party_pct"] != null){
+      RepVotedPartyList.push(x[i]["votes_with_party_pct"])
+
+    } else if (x[i]["party"] == "D" && x[i]["votes_with_party_pct"] != null) {
       DemVotedPartyList.push(x[i]["votes_with_party_pct"])
-    } else if (x[i]["party"] == "I" && x[i]["votes_with_party_pct"] != null){
+    } else if (x[i]["party"] == "I" && x[i]["votes_with_party_pct"] != null) {
       IndVotedPartyList.push(x[i]["votes_with_party_pct"])
     }
   }
 }
 
-var ave =[]
-function average (x)  {
+var ave = []
+
+function average(x) {
   var sum = 0
-  for (j=0;j<x.length;j++) {
-    if (x[j]!="null") {
+  for (j = 0; j < x.length; j++) {
+    if (x[j] != "null") {
       sum += x[j];
-  }
- 
-ave = sum /(x.length)
+    }
+
+    ave = sum / (x.length)
 
 
   }
@@ -251,7 +245,7 @@ var votedDem = document.getElementById("votedDem");
 var votedInd = document.getElementById("votedInd");
 
 
-function votedWithParty () {
+function votedWithParty() {
   votedRep.innerHTML = avePartyVotedRep;
   votedDem.innerHTML = avePartyVotedDem;
   votedInd.innerHTML = avePartyVotedInd;
@@ -326,7 +320,7 @@ function leastAtt(x) {
 
 
 
-  for (i = members.length - 1; i > (members.length- tenPrct); i--) {
+  for (i = members.length - 1; i > (members.length - tenPrct); i--) {
 
     if ((x[(members.length - tenPrct)]["missed_votes_pct"]) != (x[(members.length - tenPrct) + 1]["missed_votes_pct"])) {
 
@@ -430,7 +424,7 @@ function mostAtt(x) {
 
 
 
-  for (i = 0; i < tenPrct ; i++) {
+  for (i = 0; i < tenPrct; i++) {
 
     if ((x[(tenPrct)]["missed_votes_pct"]) != (x[tenPrct + 1]["missed_votes_pct"])) {
 
@@ -546,7 +540,7 @@ function leastLoy(x) {
 
 
 
-  for (i = 0; i < tenPrct ; i++) {
+  for (i = 0; i < tenPrct; i++) {
 
     if ((x[(tenPrct)]["votes_with_party_pct"]) != (x[tenPrct + 1]["votes_with_party_pct"])) {
 
@@ -579,11 +573,11 @@ function leastLoy(x) {
 
           newTd.setAttribute("column", 1);
           newTr.appendChild(newTd);
-          newTd.innerHTML = ((Math.ceil((x[i]["total_votes"]*x[i]["votes_with_party_pct"])/100)));
+          newTd.innerHTML = ((Math.ceil((x[i]["total_votes"] * x[i]["votes_with_party_pct"]) / 100)));
 
 
         }
-        
+
         if (j == 2) {
           var newTd = document.createElement("td");
 
@@ -628,7 +622,7 @@ function leastLoy(x) {
 
           newTd.setAttribute("column", 1);
           newTr.appendChild(newTd);
-          newTd.innerHTML = ((Math.ceil((x[i]["total_votes"]*x[i]["votes_with_party_pct"])/100)));
+          newTd.innerHTML = ((Math.ceil((x[i]["total_votes"] * x[i]["votes_with_party_pct"]) / 100)));
 
 
         }
@@ -651,104 +645,104 @@ function mostLoy(x) {
 
 
 
-for (i = x.length - 1; i > (x.length - tenPrct); i--) {
+  for (i = x.length - 1; i > (x.length - tenPrct); i--) {
 
-  if ((x[(x.length - tenPrct)]["votes_with_party_pct"]) != (x[(x.length - tenPrct) + 1]["votes_with_party_pct"])) {
+    if ((x[(x.length - tenPrct)]["votes_with_party_pct"]) != (x[(x.length - tenPrct) + 1]["votes_with_party_pct"])) {
 
 
-    var newTr = document.createElement("tr")
-    newTr.setAttribute("row", i);
-    tableMost.appendChild(newTr)
+      var newTr = document.createElement("tr")
+      newTr.setAttribute("row", i);
+      tableMost.appendChild(newTr)
 
-    for (j = 0; j < 3; j++) {
+      for (j = 0; j < 3; j++) {
 
-      if (j == 0) {
-        var newTd = document.createElement("td");
+        if (j == 0) {
+          var newTd = document.createElement("td");
 
-        newTd.setAttribute("column", 1);
-        newTr.appendChild(newTd);
-        var newA = document.createElement("a");
-        newTd.appendChild(newA);
+          newTd.setAttribute("column", 1);
+          newTr.appendChild(newTd);
+          var newA = document.createElement("a");
+          newTd.appendChild(newA);
 
-        if ((x[i]["middle_name"]) != null) {
-          newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["middle_name"]) + " " + (x[i]["last_name"]);
-          newA.setAttribute("href", x[i]["api_uri"])
-        } else {
-          newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["last_name"]);
-          newA.setAttribute("href", x[i]["api_uri"])
+          if ((x[i]["middle_name"]) != null) {
+            newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["middle_name"]) + " " + (x[i]["last_name"]);
+            newA.setAttribute("href", x[i]["api_uri"])
+          } else {
+            newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["last_name"]);
+            newA.setAttribute("href", x[i]["api_uri"])
+          }
+
+        }
+        if (j == 1) {
+          var newTd = document.createElement("td");
+
+          newTd.setAttribute("column", 1);
+          newTr.appendChild(newTd);
+          newTd.innerHTML = ((Math.ceil((x[i]["total_votes"] * x[i]["votes_with_party_pct"]) / 100)));
+
+
+        }
+        if (j == 2) {
+          var newTd = document.createElement("td");
+
+          newTd.setAttribute("column", 1);
+          newTr.appendChild(newTd);
+          newTd.innerHTML = (x[i]["votes_with_party_pct"]);
+
+
+        }
+      }
+
+    } else if ((x[(x.length - tenPrct)]["votes_with_party_pct"]) == (x[(x.length - tenPrct) + 1]["votes_with_party_pct"])) {
+
+      tenPrct++
+
+
+      var newTr = document.createElement("tr")
+      newTr.setAttribute("row", i);
+      tableMost.appendChild(newTr);
+
+      for (j = 0; j < 3; j++) {
+
+        if (j == 0) {
+          var newTd = document.createElement("td");
+
+          newTd.setAttribute("column", 1);
+          newTr.appendChild(newTd);
+          var newA = document.createElement("a");
+          newTd.appendChild(newA);
+
+          if ((x[i]["middle_name"]) != null) {
+            newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["middle_name"]) + " " + (x[i]["last_name"]);
+            newA.setAttribute("href", x[i]["api_uri"])
+          } else {
+            newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["last_name"]);
+            newA.setAttribute("href", x[i]["api_uri"])
+          }
+
+        }
+        if (j == 1) {
+          var newTd = document.createElement("td");
+
+          newTd.setAttribute("column", 1);
+          newTr.appendChild(newTd);
+          newTd.innerHTML = ((Math.ceil((x[i]["total_votes"] * x[i]["votes_with_party_pct"]) / 100)));
+
+
+        }
+        if (j == 2) {
+          var newTd = document.createElement("td");
+
+          newTd.setAttribute("column", 1);
+          newTr.appendChild(newTd);
+          newTd.innerHTML = (x[i]["votes_with_party_pct"]);
+
+
         }
 
       }
-      if (j == 1) {
-        var newTd = document.createElement("td");
-
-        newTd.setAttribute("column", 1);
-        newTr.appendChild(newTd);
-        newTd.innerHTML = ((Math.ceil((x[i]["total_votes"]*x[i]["votes_with_party_pct"])/100)));
-
-
-      }
-      if (j == 2) {
-        var newTd = document.createElement("td");
-
-        newTd.setAttribute("column", 1);
-        newTr.appendChild(newTd);
-        newTd.innerHTML = (x[i]["votes_with_party_pct"]);
-
-
-      }
-    }
-
-  } else if ((x[(x.length - tenPrct)]["votes_with_party_pct"]) == (x[(x.length - tenPrct) + 1]["votes_with_party_pct"])) {
-
-    tenPrct++
-
-
-    var newTr = document.createElement("tr")
-    newTr.setAttribute("row", i);
-    tableMost.appendChild(newTr);
-
-    for (j = 0; j < 3; j++) {
-
-      if (j == 0) {
-        var newTd = document.createElement("td");
-
-        newTd.setAttribute("column", 1);
-        newTr.appendChild(newTd);
-        var newA = document.createElement("a");
-        newTd.appendChild(newA);
-
-        if ((x[i]["middle_name"]) != null) {
-          newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["middle_name"]) + " " + (x[i]["last_name"]);
-          newA.setAttribute("href", x[i]["api_uri"])
-        } else {
-          newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["last_name"]);
-          newA.setAttribute("href", x[i]["api_uri"])
-        }
-
-      }
-      if (j == 1) {
-        var newTd = document.createElement("td");
-
-        newTd.setAttribute("column", 1);
-        newTr.appendChild(newTd);
-        newTd.innerHTML = ((Math.ceil((x[i]["total_votes"]*x[i]["votes_with_party_pct"])/100)));
-
-
-      }
-      if (j == 2) {
-        var newTd = document.createElement("td");
-
-        newTd.setAttribute("column", 1);
-        newTr.appendChild(newTd);
-        newTd.innerHTML = (x[i]["votes_with_party_pct"]);
-
-
-      }
-
     }
   }
-}
 }
 
 
@@ -760,5 +754,3 @@ for (i = x.length - 1; i > (x.length - tenPrct); i--) {
 leastLoy(members);
 
 mostLoy(members)
-
-

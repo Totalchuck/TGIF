@@ -33,7 +33,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 font-family: america ;
 color: black;
-background-image: url(/Website/Ressources/star.png);
+background-image: url(/Ressources/star.png);
 
 
 }
@@ -163,7 +163,7 @@ p.row {
 
 @font-face {
     font-family: america;
-    src: url(/Website/Ressources/Duldolar.ttf);
+    src: url(/Ressources/Duldolar.ttf);
   }
 
 

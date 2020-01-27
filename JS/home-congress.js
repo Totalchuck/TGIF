@@ -3,7 +3,7 @@
 
 //Home Page
 
-if ((document.getElementsByTagName("title")[0].innerText=="Start page")) {
+if ((document.getElementsByTagName("title")[0].innerText=="index")) {
   var bouton = document.getElementById("collapse");
 
 

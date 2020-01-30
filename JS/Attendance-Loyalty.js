@@ -11,22 +11,17 @@ let init = {
 let data = []
 let members = []
 let congress = []
+let title = document.getElementsByTagName("title")[0].id
 
 
 
-if (document.getElementsByTagName("title")[0].innerText == "House attendance") {
-  fetch("https://api.propublica.org/congress/v1/116/house/members.json", init)
+  fetch("https://api.propublica.org/congress/v1/116/"+ title +"/members.json", init)
     .then(response => {
-
-      console.log(response);
       let json = response.json();
-      console.log(json)
       return json;
     })
     .then(result => {
-
-
-      let string = JSON.stringify(result);
+     let string = JSON.stringify(result);
       data = JSON.parse(string)
       document.getElementById("plain").id="fade"
       members = data.results[0].members
@@ -35,128 +30,33 @@ if (document.getElementsByTagName("title")[0].innerText == "House attendance") {
       createList(members)
       politicianNum();
       createVotedPartyList(members);
-      avePartyVotedRep = average(RepVotedPartyList);
-      avePartyVotedDem = average(DemVotedPartyList)
-      avePartyVotedInd = average(IndVotedPartyList)
+      avePartyVotedRep = (Math.round((average(RepVotedPartyList))*100)/100);
+      avePartyVotedDem = (Math.round((average(DemVotedPartyList))*100)/100);
+      avePartyVotedInd = (Math.round((average(IndVotedPartyList))*100)/100);
       votedWithParty();
       sortedMembers = members.sort(function (a, b) {
         return a.missed_votes_pct - b.missed_votes_pct
       });
       tenPrct = Math.ceil(members.length / 10);
-      leastAtt(members)
+      if (document.getElementsByTagName("title")[0].innerText == "House attendance"||document.getElementsByTagName("title")[0].innerText == "Senate attendance") {
+        sortedMembers = members.sort(function (a, b) {
+          return a.missed_votes_pct - b.missed_votes_pct
+        });
+        leastAtt(members)
       mostAtt(members);
+      } else if (document.getElementsByTagName("title")[0].innerText == "Senate loyalty"||document.getElementsByTagName("title")[0].innerText == "House loyalty") {
+        sortedMembers = members.sort(function (a, b) {
+          return a.votes_with_party_pct - b.votes_with_party_pct
+        });
+        console.log(sortedMembers)
+        leastLoy(members)
+        mostLoy(members)
+      }
       return members
     })
 
     .catch(error => console.log(error));
-} else if (document.getElementsByTagName("title")[0].innerText == "Senate attendance") {
-  fetch("https://api.propublica.org/congress/v1/116/senate/members.json", init)
-    .then(response => {
 
-      console.log(response);
-      let json = response.json();
-      console.log(json)
-      return json;
-    })
-    .then(result => {
-
-
-      let string = JSON.stringify(result);
-      data = JSON.parse(string)
-      document.getElementById("plain").id="fade"
-      members = data.results[0].members
- 
-      congress = data.results[0].congress
-      congressNr.innerHTML = "Congress" + " " + congress
-      console.log(members[0]["party"])
-      createList(members)
-      politicianNum();
-      createVotedPartyList(members);
-      avePartyVotedRep = average(RepVotedPartyList);
-      avePartyVotedDem = average(DemVotedPartyList)
-      avePartyVotedInd = average(IndVotedPartyList)
-      votedWithParty();
-      sortedMembers = members.sort(function (a, b) {
-        return a.missed_votes_pct - b.missed_votes_pct
-      });
-      tenPrct = Math.ceil(members.length / 10);
-      leastAtt(members)
-      mostAtt(members);
-      return members
-    })
-} else if (document.getElementsByTagName("title")[0].innerText == "Senate loyalty") {
-  fetch("https://api.propublica.org/congress/v1/116/senate/members.json", init)
-    .then(response => {
-
-      console.log(response);
-      let json = response.json();
-      console.log(json)
-      return json;
-    })
-    .then(result => {
-
-
-      let string = JSON.stringify(result);
-      data = JSON.parse(string)
-      document.getElementById("plain").id="fade"
-      members = data.results[0].members
-      console.log(members)
-      congress = data.results[0].congress
-      congressNr.innerHTML = "Congress" + " " + congress
-      console.log(members[0]["party"])
-      createList(members)
-      politicianNum();
-      createVotedPartyList(members);
-      avePartyVotedRep = average(RepVotedPartyList);
-      avePartyVotedDem = average(DemVotedPartyList)
-      avePartyVotedInd = average(IndVotedPartyList)
-      votedWithParty();
-      sortedMembersLoyality = members.sort(function (a, b) {
-        return a.votes_with_party_pct - b.votes_with_party_pct
-      });
-      tenPrct = Math.ceil(members.length / 10);
-      leastLoy(members)
-      mostLoy(members)
-
-      return members
-    })
-} else if (document.getElementsByTagName("title")[0].innerText == "House loyalty") {
-  fetch("https://api.propublica.org/congress/v1/116/house/members.json", init)
-    .then(response => {
-
-      console.log(response);
-      let json = response.json();
-      console.log(json)
-      return json;
-    })
-    .then(result => {
-
-
-      let string = JSON.stringify(result);
-      data = JSON.parse(string)
-      document.getElementById("plain").id="fade"
-      members = data.results[0].members
-      console.log(members)
-      congress = data.results[0].congress
-      congressNr.innerHTML = "Congress" + " " + congress
-      console.log(members[0]["party"])
-      createList(members)
-      politicianNum();
-      createVotedPartyList(members);
-      avePartyVotedRep = average(RepVotedPartyList);
-      avePartyVotedDem = average(DemVotedPartyList)
-      avePartyVotedInd = average(IndVotedPartyList)
-      votedWithParty();
-      sortedMembersLoyality = members.sort(function (a, b) {
-        return a.votes_with_party_pct - b.votes_with_party_pct
-      });
-      tenPrct = Math.ceil(members.length / 10);
-      leastLoy(members)
-      mostLoy(members)
-
-      return members
-    })
-}
 
 
 
@@ -182,7 +82,7 @@ function createList(x) {
       RepList.push(x[i]["last_name"])
     } else if (x[i]["party"] == "D") {
       DemList.push(x[i]["last_name"])
-    } else if (x[i]["party"] == "I") {
+    } else if (x[i]["party"] == "ID") {
       IndList.push(x[i]["last_name"])
     }
   }
@@ -193,9 +93,9 @@ var numDem = document.getElementById("numDem");
 var numInd = document.getElementById("numInd");
 
 function politicianNum() {
-  numRep.innerHTML = RepList.length + 1;
-  numDem.innerHTML = DemList.length + 1;
-  numInd.innerHTML = IndList.length + 1;
+  numRep.innerHTML = RepList.length;
+  numDem.innerHTML = DemList.length;
+  numInd.innerHTML = IndList.length;
 }
 
 //calculate the average voted within party and include in HTML
@@ -203,15 +103,12 @@ function politicianNum() {
 var RepVotedPartyList = []
 var DemVotedPartyList = [];
 var IndVotedPartyList = [];
-var avePartyVotedRep = average(RepVotedPartyList);
-var avePartyVotedDem = []
-var avePartyVotedInd = []
+
 
 function createVotedPartyList(x) {
   for (i = 0; i < x.length; i++) {
     if (x[i]["party"] == "R" && x[i]["votes_with_party_pct"] != null) {
       RepVotedPartyList.push(x[i]["votes_with_party_pct"])
-
     } else if (x[i]["party"] == "D" && x[i]["votes_with_party_pct"] != null) {
       DemVotedPartyList.push(x[i]["votes_with_party_pct"])
     } else if (x[i]["party"] == "I" && x[i]["votes_with_party_pct"] != null) {
@@ -230,7 +127,7 @@ function average(x) {
     }
 
     ave = sum / (x.length)
-
+    Math.round((ave*100)/100)
 
   }
   return ave
@@ -251,50 +148,7 @@ function votedWithParty() {
   votedInd.innerHTML = avePartyVotedInd;
 }
 
-//Calculate average missed_votes
-
-
-// var RepMissVotedPartyList = [];
-// var DemMissVotedPartyList = [];
-// var IndMissVotedPartyList = [];
-
-// function createMissVotedPartyList(x) {
-//   for (i = 0; i < x.length; i++) {
-//     if (x["results"][0]["members"][i]["party"] == "R") {
-//       RepMissVotedPartyList.push(x["results"][0]["members"][i]["missed_votes_pct"])
-//     } else if (x["results"][0]["members"][i]["party"] == "D") {
-//       DemMissVotedPartyList.push(x["results"][0]["members"][i]["missed_votes_pct"])
-//     } else if (x["results"][0]["members"][i]["party"] == "I") {
-//       IndMissVotedPartyList.push(x["results"][0]["members"][i]["missed_votes_pct"])
-//     }
-//   }
-// }
-
-// createMissVotedPartyList(data);
-
-
-// var sum = 0;
-
-// function addingArray(x) {
-
-//   for (i = 0; i < x.length; i++) {
-//     sum += x[i];
-
-//   }
-
-//   return sum
-// }
-
-// var aveMissPartyVotedRep = addingArray(RepMissVotedPartyList) / (RepMissVotedPartyList.length + 1);
-// var sum = 0;
-// var aveMissPartyVotedDem = addingArray(DemMissVotedPartyList) / (DemMissVotedPartyList.length + 1);
-// var sum = 0;
-// var aveMissPartyVotedInd = addingArray(IndMissVotedPartyList) / (IndMissVotedPartyList.length + 1);
-
-
-
-
-//
+//calculte total missed vote
 
 var totalMissVotedPartyList = [];
 
@@ -317,11 +171,7 @@ var sortedMembers = []
 var tenPrct = []
 
 function leastAtt(x) {
-
-
-
   for (i = members.length - 1; i > (members.length - tenPrct); i--) {
-
     if ((x[(members.length - tenPrct)]["missed_votes_pct"]) != (x[(members.length - tenPrct) + 1]["missed_votes_pct"])) {
 
 
@@ -341,10 +191,10 @@ function leastAtt(x) {
 
           if ((x[i]["middle_name"]) != null) {
             newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["middle_name"]) + " " + (x[i]["last_name"]);
-            newA.setAttribute("href", x[i]["api_uri"])
+            newA.setAttribute("href", x[i]["url"])
           } else {
             newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["last_name"]);
-            newA.setAttribute("href", x[i]["api_uri"])
+            newA.setAttribute("href", x[i]["url"])
           }
 
         }
@@ -445,10 +295,10 @@ function mostAtt(x) {
 
           if ((x[i]["middle_name"]) != null) {
             newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["middle_name"]) + " " + (x[i]["last_name"]);
-            newA.setAttribute("href", x[i]["api_uri"])
+            newA.setAttribute("href", x[i]["url"])
           } else {
             newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["last_name"]);
-            newA.setAttribute("href", x[i]["api_uri"])
+            newA.setAttribute("href", x[i]["url"])
           }
 
         }
@@ -524,22 +374,13 @@ function mostAtt(x) {
   }
 }
 
-leastAtt(data);
-mostAtt(data);
+//Least and most Loyal
 
-// var sortedMembersLoyality = allMembers.sort(function (a, b) {
-//   return a.votes_with_party_pct - b.votes_with_party_pct
-// });
-
-// console.log(sortedMembersLoyality);
 
 
 
 
 function leastLoy(x) {
-
-
-
   for (i = 0; i < tenPrct; i++) {
 
     if ((x[(tenPrct)]["votes_with_party_pct"]) != (x[tenPrct + 1]["votes_with_party_pct"])) {
@@ -561,10 +402,10 @@ function leastLoy(x) {
 
           if ((x[i]["middle_name"]) != null) {
             newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["middle_name"]) + " " + (x[i]["last_name"]);
-            newA.setAttribute("href", x[i]["api_uri"])
+            newA.setAttribute("href", x[i]["url"])
           } else {
             newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["last_name"]);
-            newA.setAttribute("href", x[i]["api_uri"])
+            newA.setAttribute("href", x[i]["url"])
           }
 
         }
@@ -642,10 +483,7 @@ function leastLoy(x) {
 }
 
 function mostLoy(x) {
-
-
-
-  for (i = x.length - 1; i > (x.length - tenPrct); i--) {
+ for (i = x.length - 1; i > (x.length - tenPrct); i--) {
 
     if ((x[(x.length - tenPrct)]["votes_with_party_pct"]) != (x[(x.length - tenPrct) + 1]["votes_with_party_pct"])) {
 
@@ -666,10 +504,10 @@ function mostLoy(x) {
 
           if ((x[i]["middle_name"]) != null) {
             newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["middle_name"]) + " " + (x[i]["last_name"]);
-            newA.setAttribute("href", x[i]["api_uri"])
+            newA.setAttribute("href", x[i]["url"])
           } else {
             newA.innerHTML = (x[i]["first_name"]) + " " + (x[i]["last_name"]);
-            newA.setAttribute("href", x[i]["api_uri"])
+            newA.setAttribute("href", x[i]["url"])
           }
 
         }
@@ -750,7 +588,3 @@ function mostLoy(x) {
 
 
 
-
-leastLoy(members);
-
-mostLoy(members)

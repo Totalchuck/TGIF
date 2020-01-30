@@ -51,23 +51,8 @@ a {
 }
 
 
-.congress {
-    max-height: 18px;
-    overflow: hidden;
-}
-
-.congress:hover {
-    max-height: 120px;
-    overflow: hidden;
-}
-
-.menu {
-  
-        background-color: rgb(156, 156, 226);
-     
-  
        
-}
+
 
    #bande2 {
     background-color: rgb(105, 105, 230);
@@ -87,10 +72,6 @@ a {
     padding: 20px 0px;
 }
 
-li  {
-    border: black 1px solid;
-    list-style-type: none;
-    }
 
 .row {
     margin: 10px 0px;
@@ -98,7 +79,6 @@ li  {
 
 table {
 
- 
     background-color: rgba(255, 255, 255, 0.897);
 }
 
